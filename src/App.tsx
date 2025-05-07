@@ -28,17 +28,20 @@ function App() {
 
 
   function Cell({i}:{i:number}){
+    const x = 100*(i%S)
+    const y = 100*Math.floor(i/S)
     return(
-      <>
+      <g transform={"translate("+x+","+y+")"} 
+      onClick={()=>clickHandler(i)}>
         <rect width={100} height={100}
-        x={100*(i%S)}  
-        y={100*Math.floor(i/S)}
+        x={0}  
+        y={0}
         stroke="black" fill={pal[cols[i]]}
-        onClick={()=>clickHandler(i)}>      
+        >      
         </rect>
-        <text fill="red" x={100*(i%S)+50} 
-        y={100*Math.floor(i/S)+50}>{i}</text>
-      </>
+        <text fill="red" x={50} 
+        y={50}>{i}</text>
+      </g>
     )
   }
 
